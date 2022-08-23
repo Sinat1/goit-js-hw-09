@@ -8,6 +8,8 @@ const refs = {
   body: document.querySelector('body'),
 };
 
+let timerId = null;
+
 refs.stopBtn.disabled = true;
 
 const onStartBtnClick = () => {
