@@ -10,8 +10,6 @@ const refs = {
 
 let timerId = null;
 
-refs.stopBtn.disabled = true;
-
 const onStartBtnClick = () => {
   refs.startBtn.disabled = true;
   refs.stopBtn.disabled = false;

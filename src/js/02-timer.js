@@ -11,7 +11,6 @@ const refs = {
   secondsCounter: document.querySelector('span[data-seconds]'),
 };
 
-refs.startBtn.disabled = true;
 let intervalId = null;
 let newDate = null;
 
@@ -32,17 +31,21 @@ flatpickr(refs.datetimePickerInput, {
 });
 
 function onStartBtnClick() {
+  refs.startBtn.disabled = true;
+  refs.datetimePickerInput.disabled = true;
+
   timerId = setInterval(() => {
     let timeRemainder = convertMs(newDate - Date.now());
 
     if (newDate < Date.now()) {
+      refs.datetimePickerInput.disabled = false;
       clearInterval(intervalId);
       return dateMarkup();
     }
 
     dateMarkup(timeRemainder);
-    refs.startBtn.disabled = true;
-    refs.datetimePickerInput.disabled = true;
+    // refs.startBtn.disabled = true;
+    // refs.datetimePickerInput.disabled = true;
   }, 1000);
 }
 
